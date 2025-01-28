@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types'; // Importar prop-types
+
 import './Auth.css';
 import TextLeft from '../Carousel/TextLeft';
 import TextRight from '../Carousel/TextRight';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Importar Link
 
-function Register({ setView }) {
+function Register() { // No es necesario pasar `setView` como prop
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleSubmit = (e) => {
@@ -27,7 +28,7 @@ function Register({ setView }) {
       {/* Textos a la izquierda */}
       <TextLeft currentIndex={currentIndex} />
 
-      {/* Formulario de Registro centrado */}
+      {/* Formulario de Registro */}
       <div className="form-container">
         <h2>Registro</h2>
         <form onSubmit={handleSubmit}>
@@ -44,7 +45,8 @@ function Register({ setView }) {
             <input type="password" id="password" placeholder="Crea una contraseña" required />
           </div>
           <button type="submit" className="button register">Registrar</button>
-          <p>¿Ya tienes cuenta? <span onClick={() => setView('login')} className="link">Inicia sesión</span></p>
+        
+          <p>¿Ya tienes cuenta? <Link to="/auth?view=login" className="link">Inicia sesión</Link></p>
         </form>
       </div>
 
@@ -53,9 +55,5 @@ function Register({ setView }) {
     </div>
   );
 }
-
-Register.propTypes = {
-  setView: PropTypes.func.isRequired,
-};
 
 export default Register;

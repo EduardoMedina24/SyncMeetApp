@@ -1,16 +1,23 @@
+import { Link } from 'react-router-dom'; // Importar Link para navegar
 import PropTypes from 'prop-types'; // Importar PropTypes
 import './Navbar.css'; // Estilos específicos para el Navbar
 
-function Navbar({ setView }) {
+function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <h1>SyncMeet</h1> {/* Aquí puede ir el logo de la app */}
+        <h1>SyncMeet</h1>
       </div>
       <ul className="navbar-menu">
-        <li><a href="#" onClick={() => setView('login')}>Login</a></li>
-        <li><a href="#" onClick={() => setView('register')}>Registro</a></li>
-        <li> </li>
+        <li>
+          <Link to="/auth?view=login">Login</Link> {/* Navegar a /auth con view=login */}
+        </li>
+        <li>
+          <Link to="/auth?view=register">Registro</Link> {/* Navegar a /auth con view=register */}
+        </li>
+        <li>
+          <Link to="/">Inicio</Link> {/* Navegar al inicio */}
+        </li>
       </ul>
     </nav>
   );
